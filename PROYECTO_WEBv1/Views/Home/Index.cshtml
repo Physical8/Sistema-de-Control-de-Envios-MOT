@@ -1,0 +1,95 @@
+﻿<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*.videoCont {
+        padding-top: 50px;
+    }*/
+    #velitas1 {
+        background-color: #009A44 !important;
+    }
+
+    video {
+        
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .btn-full-width {
+        width: 100%;
+    }
+    .btn-primary {
+        background-color: #009A44 !important;
+    }
+    .videoCont {
+        padding-left: 65px !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row" style="height:50px"></div>
+    <div class="row">
+        <div class="col s12">
+            <div class="videoCont">
+                <video width="640" height="360" controls>
+                    <source src="~/Videos/Maestri.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s8">
+            <a href="https://view.genial.ly/640777166ec87c0018c5fcec/guide-mot" class="btn btn-primary" target="_blank">Manual de usuario</a>
+        </div>
+        <div class="col s4">
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Términos y Condiciones</h4>
+                    <p>Se recomienda no borrar clientes, ciudades o sedes que se encuentren vinculados con uno
+                    o más viajes.
+                    <br />
+                    Usted podrá eliminar un viaje sin problemas, sin embargo, tenga en cuenta que si este 
+                    tenia creada un trazabilidad esta información tambien será suprimida.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                </div>
+            </div>
+            <!-- Modal Trigger -->
+            <button data-target="modal1" class="btn modal-trigger btn-full-width" id="velitas1">Términos y Condiciones</button>
+        </div>
+    </div>
+
+</div>
+
+<!--<main>-->
+    @*<div>
+        <h2>Manual de Usuario</h2>
+    </div>*@
+    <!--<br />
+    <br />
+    <div class="videoCont">
+        <video width="640" height="360" controls>
+            <source src="~/Videos/Maestri.mp4" type="video/mp4">
+            Tu navegador no soporta el tag de video.
+        </video>
+    </div>
+</main>-->
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>

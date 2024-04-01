@@ -1,0 +1,123 @@
+﻿@model PROYECTO_WEBv1.Models.clientes
+
+@{
+    ViewBag.Title = "Delete";
+}
+<style>
+    .inline-block {
+        display: inline-block;
+    }
+    .btnAtras {
+        background-image: url('../../images/icons/reply_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    #btnBorrar {
+        background-color: #009A44 !important;
+    }
+</style>
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="text-center">
+            <h6 class="inline-block">¿Estás seguro de que quieres borrar a </h6>
+            <h5 class="inline-block">@Html.DisplayFor(model => model.nombre) @Html.DisplayFor(model => model.apellidos)</h5>
+            <h6 class="inline-block">de la lista de clientes?</h6>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <div class="col s10">@Html.ActionLink(" ", "Index", null, new { @class = "btnAtras" })</div>
+                <div class="col s2"><input type="submit" value="Borrar" class="btn btn-default" id="btnBorrar" /> </div>
+
+
+
+            </div>
+        }
+    </div>
+
+</div>
+
+
+
+
+@*<div>
+    <h4>clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>*@

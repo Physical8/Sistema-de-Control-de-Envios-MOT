@@ -1,0 +1,195 @@
+﻿@model PROYECTO_WEBv1.Models.clientes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+
+    #crearClientes,
+    #crearEnvios {
+        background-color: #009A44 !important;
+    }
+
+    .btnAgregar {
+        background-image: url('../../images/icons/add_circle_outline_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    .btnAtras {
+        background-image: url('../../images/icons/reply_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+
+    .btnEditar,
+    .btnEliminar,
+    .btnDetalles {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+        vertical-align: middle; /* Ajusta según sea necesario */
+    }
+
+    .btnEditar {
+        background-image: url('../../images/icons/edit_black_24dp.svg');
+    }
+
+    .btnEliminar {
+        background-image: url('../../images/icons/delete_black_24dp.svg');
+    }
+
+    .btnDetalles {
+        background-image: url('../../images/icons/info_black_24dp.svg');
+    }
+
+    #btn1 {
+        padding-top: 20px !important;
+    }
+
+    #tablita tr:nth-child(odd) {
+        background: rgb(128, 128, 128, 0.29) !important; /* 0.3 para reducir la opacidad */
+    }
+
+    h5 {
+        color: #009A44 !important;
+        font-weight: bold !important;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s11"><h5>Detalles del cliente</h5></div>
+        <div class="col s1">@Html.ActionLink(" ", "Edit", new { id = Model.id_cliente }, new { @class = "btnEditar" }) </div>
+    </div>
+
+    <div class="row"></div>
+    <hr />
+
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5"><label>Identificación</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5">@Html.DisplayFor(model => model.identificacion)</div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5"><label>Nombre</label></div>
+        <div class="col s5"><label>Apellidos</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5">@Html.DisplayFor(model => model.nombre)</div>
+        <div class="col s5">@Html.DisplayFor(model => model.apellidos)</div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5"><label>Teléfono</label></div>
+        <div class="col s5"><label>Fecha nacimiento</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5">@Html.DisplayFor(model => model.telefono)</div>
+        <div class="col s5">@Html.DisplayFor(model => model.fecha_nacimiento)</div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5"><label>Dirección</label></div>
+        <div class="col s5"><label>Correo</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s5">@Html.DisplayFor(model => model.direccion)</div>
+        <div class="col s5">@Html.DisplayFor(model => model.correo)</div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            @Html.ActionLink(" ", "Index", null, new { @class = "btnAtras" })
+        </div>
+    </div>
+
+
+
+    @*<div class="row">
+        <div class="col s2"></div>
+    </div>*@
+</div>
+
+
+
+
+@*<div>
+    <h4>clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+    </dl>
+</div>*@
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cliente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

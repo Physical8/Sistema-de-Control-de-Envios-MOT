@@ -1,0 +1,182 @@
+﻿@model PROYECTO_WEBv1.Models.envios
+
+@{
+    ViewBag.Title = "Envios";
+}
+
+<style>
+    #Botonsito {
+        padding-top: 20px;
+    }
+
+    .btn, .btn-large, .btn-small {
+        background-color: #009A44 !important;
+    }
+
+    #guide8{
+        border:1px solid black !important;
+    }
+</style>
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID del Envíoxxx</th>
+                <th>Fecha y Hora</th>
+                <th>Ubicación</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>@(Model?.descripcion_paquete ?? "N/A")</td>
+                <td>@(Model?.valor_envio ?? 0)</td>
+                <td>@(Model?.clientes?.nombre ?? "N/A")</td>
+                <td>@(Model?.clientes1?.nombre ?? "N/A")</td>
+            </tr>
+        </tbody>
+    </table>*@
+
+<div class="container">
+    <!-- Page Content goes here -->
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s2 center-align">
+            <img src="@Url.Content("~/Images/truck.gif")" alt="Mi GIF" height="80" />
+        </div>
+        <form class="col s10" method="get" action="@Url.Action("Envios", "Home")">
+            <div class="row">
+                <div class="input-field col s9">
+                    <input type="number" name="id_buscado" min="1" max="100" class="validate">
+                    <label for="id_buscado">Rastrear envio</label>
+                </div>
+                <div class="col s3" id="Botonsito">
+                    <button type="submit" class="btn buscar_btn waves-effect waves-light">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container" id="guide8">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s8"> </div>
+        <div class="col s4 center-align">
+            <label>Numero de Envio:</label>
+            @(Model?.id_envio.ToString() ?? " ")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s1">
+            <label>ESTADO:</label>
+        </div>
+        <div class="col s3">
+            @(Model?.estado_envio?? " ")
+        </div>
+        <div class="col s3">
+            <label>Ubicacion más reciente:</label>
+        </div>
+        <div class="col s3">
+            @if (Model?.trazabilidad != null && Model.trazabilidad.Any())
+            {
+                @Html.DisplayFor(modelItem => Model.trazabilidad.OrderByDescending(t => t.fecha_registro).First().punto_control)
+            }
+            else
+            {
+                // Manejar el caso cuando trazabilidad es null o vacío
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s1">
+            <label>Descipción:</label>
+        </div>
+        <div class="col s3">
+            @(Model?.descripcion_paquete?? " ")
+        </div>
+        <div class="col s3">
+            <label>Fecha de envio:</label>
+        </div>
+        <div class="col s3">
+            @(Model?.fecha_creacion.ToString() ?? " ")
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s9">
+            <label>REMITENTE / ORIGEN:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s7">
+            <table class="centered">
+                <tr>
+                    <td><label>Origen:</label><br />@(Model?.ciudades?.ciudad ?? " ")</td>
+                    <td><label>Destino:</label><br />@(Model?.ciudades1?.ciudad ?? " ")</td>
+                </tr>
+                <tr>
+                    <td><label>Nombre:</label><br />@(Model?.clientes?.nombre?? " ")</td>
+                    <td><label>Apellido:</label><br />@(Model?.clientes?.apellidos ?? " ")</td>
+                </tr>
+                <tr>
+                    <td><label>Dirección:</label><br />@(Model?.clientes?.direccion ?? " ")</td>
+                    <td><label>Teléfono:</label><br />@(Model?.clientes?.telefono ?? " ")</td>
+                </tr>
+                <tr>
+                    <td><label>Tipo:</label><br />@(Model?.tipo_envio ?? " ")</td>
+                    <td><label>Peso (Kg):</label><br />@(Model?.peso.ToString() ?? " ")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s9">
+            <label>DESTINATARIO / DESTINO:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s7">
+            <table class="centered">
+                <tr>
+                    <td><label>Origen:</label><br />@(Model?.ciudades?.ciudad ?? " ")</td>
+                    <td><label>Destino:</label><br />@(Model?.ciudades1?.ciudad ?? " ")</td>
+                </tr>
+                <tr>
+                    <td><label>Nombre:</label><br />@(Model?.clientes1?.nombre?? " ")</td>
+                    <td><label>Apellido:</label><br />@(Model?.clientes1?.apellidos ?? " ")</td>
+                </tr>
+                <tr>
+                    <td><label>Dirección:</label><br />@(Model?.clientes1?.direccion ?? " ")</td>
+                    <td><label>Teléfono:</label><br />@(Model?.clientes1?.telefono ?? " ")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<div class="row">
+    <div class="col s12">
+
+    </div>
+</div>
+
+
+
+
+
+
+

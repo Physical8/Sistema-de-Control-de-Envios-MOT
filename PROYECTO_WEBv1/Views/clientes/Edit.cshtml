@@ -1,0 +1,245 @@
+﻿@model PROYECTO_WEBv1.Models.clientes
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<style>
+
+    #editarClientes {
+        background-color: #009A44 !important;
+    }
+
+    .btnAgregar {
+        background-image: url('../../images/icons/add_circle_outline_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    .btnAtras {
+        background-image: url('../../images/icons/reply_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+
+    .btnEditar,
+    .btnEliminar,
+    .btnDetalles {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+        vertical-align: middle; /* Ajusta según sea necesario */
+    }
+
+    .btnEditar {
+        background-image: url('../../images/icons/edit_black_24dp.svg');
+    }
+
+    .btnEliminar {
+        background-image: url('../../images/icons/delete_black_24dp.svg');
+    }
+
+    .btnDetalles {
+        background-image: url('../../images/icons/info_black_24dp.svg');
+    }
+
+    #btn1 {
+        padding-top: 20px !important;
+    }
+
+    #tablita tr:nth-child(odd) {
+        background: rgb(128, 128, 128, 0.29) !important; /* 0.3 para reducir la opacidad */
+    }
+
+    h5 {
+        color: #009A44 !important;
+        font-weight: bold !important;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row"></div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h5>Editar cliente</h5>
+
+    <div class="row"></div>
+    @*<hr />*@
+
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_cliente)
+
+    <div class="row">
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.identificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.identificacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.identificacion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.apellidos, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="form-group">
+                <label>Fecha nacimiento</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.fecha_nacimiento, new { htmlAttributes = new { @class = "datepicker form-control" } })
+                    @Html.ValidationMessageFor(model => model.fecha_nacimiento, "", new { @class = "text-danger" })
+                </div>
+
+                @*<div class="col-md-10">
+            @Html.EditorFor(model => model.fecha_nacimiento, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fecha_nacimiento, "", new { @class = "text-danger" })
+        </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12"></div>
+    </div>
+
+    <div class="row">
+        <div class="col s10">
+            <div>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btnAtras" })
+            </div>
+        </div>
+        <div class="col s2">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-default" id="editarClientes" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>*@
+</div>
+    }
+
+    <div class="row">
+        <div class="col s2"></div>
+    </div>
+
+</div>
+
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        var datepickers = document.querySelectorAll('.datepicker');
+        var datepickerInstances = M.Datepicker.init(datepickers, {
+            format: 'yyyy-mm-dd', // Puedes personalizar el formato según tus necesidades
+            autoClose: true,
+        });
+        var form = document.querySelector('form'); // Selecciona el formulario
+
+        form.addEventListener('submit', function (event) {
+            // Itera sobre los campos del formulario y verifica si están vacíos
+            var inputs = form.querySelectorAll('input[required]');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].value.trim()) {
+                    alert('Por favor, complete todos los campos obligatorios.');
+                    event.preventDefault(); // Evita que el formulario se envíe si hay campos vacíos
+                    return;
+                }
+            }
+        });
+    });
+</script>
+}

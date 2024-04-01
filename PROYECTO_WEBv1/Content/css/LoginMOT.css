@@ -1,0 +1,40 @@
+﻿body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    background: url('https://i.imgur.com/l5fdcnT.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+.user_card {
+    background-color: #ffffff !important;
+}
+
+.brand_logo_container {
+    background-color: #009A44 !important;
+}
+
+span.input-group-text {
+    background-color: #009A44 !important;
+}
+
+.login_btn {
+    background: #009A44 !important;
+}
+
+/*#tituloMOT {
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+}*/
+
+h1 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
+    font-size: 24px;
+}
+

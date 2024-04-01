@@ -1,0 +1,302 @@
+﻿@model PROYECTO_WEBv1.Models.envios
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+
+    #crearClientes,
+    #crearEnvios {
+        background-color: #009A44 !important;
+    }
+
+    .btnAgregar {
+        background-image: url('../../images/icons/add_circle_outline_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    .btnAtras {
+        background-image: url('../../images/icons/reply_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+
+    .btnEditar,
+    .btnEliminar,
+    .btnDetalles {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+        vertical-align: middle; /* Ajusta según sea necesario */
+    }
+
+    .btnEditar {
+        background-image: url('../../images/icons/edit_black_24dp.svg');
+    }
+
+    .btnEliminar {
+        background-image: url('../../images/icons/delete_black_24dp.svg');
+    }
+
+    .btnDetalles {
+        background-image: url('../../images/icons/info_black_24dp.svg');
+    }
+
+    #btn1 {
+        padding-top: 20px !important;
+    }
+
+    #tablita tr:nth-child(odd) {
+        background: rgb(128, 128, 128, 0.29) !important; /* 0.3 para reducir la opacidad */
+    }
+
+    h5 {
+        color: #009A44 !important;
+        font-weight: bold !important;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s11"><h5>Detalles del envio</h5></div>
+        <div class="col s1">@Html.ActionLink(" ", "Edit", new { id = Model.id_envio }, new { @class = "btnEditar" }) </div>
+    </div>
+
+    <div class="row"></div>
+    <hr />
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3">
+            <label>Sede</label>
+        </div>
+        <div class="col s4">
+            <label>Fecha creación</label>
+        </div>
+        <div class="col s4">
+            <label>Estado del Envio</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3">
+            @Html.DisplayFor(model => model.sedes.sede)
+        </div>
+        <div class="col s4">
+            @Html.DisplayFor(model => model.fecha_creacion)
+        </div>
+        <div class="col s4">
+            @Html.DisplayFor(model => model.estado_envio)
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4"><label>Ciudad de Origen</label></div>
+        <div class="col s6"><label>CC Emisor</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4">@Html.DisplayFor(model => model.ciudades.ciudad)</div>
+        <div class="col s6">@Html.DisplayFor(model => model.clientes.identificacion)</div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4"><label>Ciudad de Destino</label></div>
+        <div class="col s6"><label>CC Receptor</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4">@Html.DisplayFor(model => model.ciudades1.ciudad)</div>
+        <div class="col s6">@Html.DisplayFor(model => model.clientes1.identificacion)</div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3"><label>Descripción de envio</label></div>
+        <div class="col s4"><label>Valor declarado</label></div>
+        <div class="col s4"><label>Peso</label></div>
+    </div>
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3">@Html.DisplayFor(model => model.descripcion_paquete)</div>
+        <div class="col s4">@Html.DisplayFor(model => model.valor_declarado)</div>
+        <div class="col s4">@Html.DisplayFor(model => model.peso)</div>
+    </div>
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3"><label>Alto</label></div>
+        <div class="col s4"><label>Largo</label></div>
+        <div class="col s4"><label>Ancho</label></div>
+    </div>
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s3">@Html.DisplayFor(model => model.alto)</div>
+        <div class="col s4">@Html.DisplayFor(model => model.largo)</div>
+        <div class="col s4">@Html.DisplayFor(model => model.ancho)</div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4"><label>Tipo de envio</label></div>
+        <div class="col s6"><label>Valor de envio</label></div>
+    </div>
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s4">@Html.DisplayFor(model => model.tipo_envio)</div>
+        <div class="col s6">@Html.DisplayFor(model => model.valor_envio)</div>
+    </div>
+
+
+
+    
+
+    <div class="row">
+        <div class="col s12">
+            @Html.ActionLink(" ", "Index", null, new { @class = "btnAtras" })
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+@*<div>
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion_paquete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion_paquete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_declarado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_declarado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.largo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ancho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ancho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciudades.ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciudades.ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciudades1.ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciudades1.ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientes.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientes.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientes1.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientes1.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sedes.sede)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sedes.sede)
+        </dd>
+
+    </dl>*@
+@*</div>*@
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_envio }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

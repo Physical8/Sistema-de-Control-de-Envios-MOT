@@ -1,0 +1,121 @@
+﻿@model IEnumerable<PROYECTO_WEBv1.Models.clientes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .btnAgregar {
+        
+        background-image: url('../../images/icons/add_circle_outline_black_24dp.svg');
+        height: 24px;
+        width: 24px;
+        display: block;
+    }
+
+    .btnEditar,
+    .btnEliminar,
+    .btnDetalles {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+        vertical-align: middle; /* Ajusta según sea necesario */
+    }
+
+    .btnEditar {
+        background-image: url('../../images/icons/edit_black_24dp.svg');
+    }
+
+    .btnEliminar {
+        background-image: url('../../images/icons/delete_black_24dp.svg');
+    }
+
+    .btnDetalles {
+        background-image: url('../../images/icons/info_black_24dp.svg');
+    }
+
+    #btn1{
+        padding-top:20px !important;
+    }
+
+    #tablita tr:nth-child(odd) {
+        background: rgb(128, 128, 128, 0.29) !important; /* 0.3 para reducir la opacidad */
+    }
+
+    h5 {
+        color: #009A44 !important;
+        font-weight: bold !important;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row"></div>
+     <div class="row">
+         <div class="col s11"><h5>Listado de clientes</h5></div>
+         <div class="col s1" id="btn1">@Html.ActionLink(" ", "Create", null, new {@class= "btnAgregar" })</div>
+     </div>
+     <div class="row">
+         <table class="centered" id="tablita">
+             <tr>
+                 <td></td>
+                 <td>
+                     @*@Html.DisplayNameFor(model => model.identificacion)*@
+                     <label>Número identificación</label>
+                 </td>
+                 <td><label>Nombres</label></td>
+                 <td><label>Apellidos</label></td>
+                 <td><label>Teléfono</label></td>
+                 <td><label>Fecha nacimiento</label></td>
+                 <td><label>Dirección</label></td>
+                 <td><label>Correo</label></td>
+                 <td></td>
+             </tr>
+
+             @foreach (var item in Model)
+             {
+                 <tr>
+                     <td>@Html.DisplayFor(modelItem => item.id_cliente)</td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.identificacion)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.nombre)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.apellidos)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.telefono)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.fecha_nacimiento)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.direccion)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.correo)
+                     </td>
+                     <td style="width: 150px;">
+                         @Html.ActionLink(" ", "Edit", new { id = item.id_cliente }, new { @class = "btnEditar" }) |
+                         @Html.ActionLink(" ", "Details", new { id = item.id_cliente }, new { @class = "btnDetalles" }) |
+                         @Html.ActionLink(" ", "Delete", new { id = item.id_cliente }, new { @class = "btnEliminar" })
+                     </td>
+                 </tr>
+             }
+
+         </table>
+
+
+     </div>
+
+</div>  
+
+
+
+
+
+
+
+

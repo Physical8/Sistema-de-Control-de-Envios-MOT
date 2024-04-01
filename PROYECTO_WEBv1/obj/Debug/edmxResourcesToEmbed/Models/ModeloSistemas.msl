@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MOTModelStoreContainer" CdmEntityContainer="DB_web_v1Entities">
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="MOTModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="envios">
+      <EntityTypeMapping TypeName="MOTModel.envios">
+        <MappingFragment StoreEntitySet="envios">
+          <ScalarProperty Name="id_envio" ColumnName="id_envio" />
+          <ScalarProperty Name="id_emisor" ColumnName="id_emisor" />
+          <ScalarProperty Name="id_receptor" ColumnName="id_receptor" />
+          <ScalarProperty Name="sede" ColumnName="sede" />
+          <ScalarProperty Name="descripcion_paquete" ColumnName="descripcion_paquete" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="valor_declarado" ColumnName="valor_declarado" />
+          <ScalarProperty Name="largo" ColumnName="largo" />
+          <ScalarProperty Name="alto" ColumnName="alto" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="tipo_envio" ColumnName="tipo_envio" />
+          <ScalarProperty Name="valor_envio" ColumnName="valor_envio" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="estado_envio" ColumnName="estado_envio" />
+          <ScalarProperty Name="ultimo_punto_control" ColumnName="ultimo_punto_control" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trazabilidad">
+      <EntityTypeMapping TypeName="MOTModel.trazabilidad">
+        <MappingFragment StoreEntitySet="trazabilidad">
+          <ScalarProperty Name="id_trazabilidad" ColumnName="id_trazabilidad" />
+          <ScalarProperty Name="id_envio" ColumnName="id_envio" />
+          <ScalarProperty Name="punto_control" ColumnName="punto_control" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

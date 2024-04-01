@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_web_v1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ciudades">
+    <Key>
+      <PropertyRef Name="id_ciudad" />
+    </Key>
+    <Property Name="id_ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="identificacion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="envios">
+    <Key>
+      <PropertyRef Name="id_envio" />
+    </Key>
+    <Property Name="id_envio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_sede" Type="int" Nullable="false" />
+    <Property Name="id_emisor" Type="int" Nullable="false" />
+    <Property Name="id_ciudad_origen" Type="int" Nullable="false" />
+    <Property Name="id_receptor" Type="int" Nullable="false" />
+    <Property Name="id_ciudad_destino" Type="int" Nullable="false" />
+    <Property Name="descripcion_paquete" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="peso" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="valor_declarado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="largo" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="alto" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="ancho" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="tipo_envio" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valor_envio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="estado_envio" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sedes">
+    <Key>
+      <PropertyRef Name="id_sede" />
+    </Key>
+    <Property Name="id_sede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sede" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trazabilidad">
+    <Key>
+      <PropertyRef Name="id_trazabilidad" />
+    </Key>
+    <Property Name="id_trazabilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_envio" Type="int" Nullable="false" />
+    <Property Name="punto_control" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__envios__id_ciuda__0B91BA14">
+    <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+    <End Role="envios" Type="Self.envios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudades">
+        <PropertyRef Name="id_ciudad" />
+      </Principal>
+      <Dependent Role="envios">
+        <PropertyRef Name="id_ciudad_origen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__envios__id_ciuda__0D7A0286">
+    <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+    <End Role="envios" Type="Self.envios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudades">
+        <PropertyRef Name="id_ciudad" />
+      </Principal>
+      <Dependent Role="envios">
+        <PropertyRef Name="id_ciudad_destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__envios__id_emiso__0A9D95DB">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+    <End Role="envios" Type="Self.envios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="envios">
+        <PropertyRef Name="id_emisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__envios__id_recep__0C85DE4D">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+    <End Role="envios" Type="Self.envios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="envios">
+        <PropertyRef Name="id_receptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__envios__id_sede__09A971A2">
+    <End Role="sedes" Type="Self.sedes" Multiplicity="1" />
+    <End Role="envios" Type="Self.envios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sedes">
+        <PropertyRef Name="id_sede" />
+      </Principal>
+      <Dependent Role="envios">
+        <PropertyRef Name="id_sede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trazabili__id_en__114A936A">
+    <End Role="envios" Type="Self.envios" Multiplicity="1" />
+    <End Role="trazabilidad" Type="Self.trazabilidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="envios">
+        <PropertyRef Name="id_envio" />
+      </Principal>
+      <Dependent Role="trazabilidad">
+        <PropertyRef Name="id_envio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_web_v1ModelStoreContainer">
+    <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="envios" EntityType="Self.envios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sedes" EntityType="Self.sedes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trazabilidad" EntityType="Self.trazabilidad" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__envios__id_ciuda__0B91BA14" Association="Self.FK__envios__id_ciuda__0B91BA14">
+      <End Role="ciudades" EntitySet="ciudades" />
+      <End Role="envios" EntitySet="envios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__envios__id_ciuda__0D7A0286" Association="Self.FK__envios__id_ciuda__0D7A0286">
+      <End Role="ciudades" EntitySet="ciudades" />
+      <End Role="envios" EntitySet="envios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__envios__id_emiso__0A9D95DB" Association="Self.FK__envios__id_emiso__0A9D95DB">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="envios" EntitySet="envios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__envios__id_recep__0C85DE4D" Association="Self.FK__envios__id_recep__0C85DE4D">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="envios" EntitySet="envios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__envios__id_sede__09A971A2" Association="Self.FK__envios__id_sede__09A971A2">
+      <End Role="sedes" EntitySet="sedes" />
+      <End Role="envios" EntitySet="envios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trazabili__id_en__114A936A" Association="Self.FK__trazabili__id_en__114A936A">
+      <End Role="envios" EntitySet="envios" />
+      <End Role="trazabilidad" EntitySet="trazabilidad" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

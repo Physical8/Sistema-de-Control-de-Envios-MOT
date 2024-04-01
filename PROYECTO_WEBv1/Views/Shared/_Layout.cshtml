@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Gestion Envios-MOT</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="~/Content/Stylex.css" rel="stylesheet" />
+    <link rel="icon" href="~/Images/ICON_MAESTRI.jpeg" type="image/x-icon">
+    <style>
+        body {
+            margin: 0 !important;
+            display: flex;
+        }
+
+        #slide-out.sidenav-fixed {
+            width: 200px;
+        }
+
+        .container1 {
+            width: 200px !important;
+            background-color: #263238; /* Ajusta según tus preferencias */
+            color: white; /* Ajusta según tus preferencias */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .container2 {
+            flex-grow: 1;
+            box-sizing: border-box;
+        }
+
+        #TittleNav,
+        #exitLink {
+            color: white !important;
+        }
+
+        #tittlePrin{
+            padding-left:15px !important;
+        }
+
+        /* Añade estilos adicionales según sea necesario */
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+            <br />
+            <li class="logo">
+                <a id="logo-container" href="/" class="brand-logo">
+                    <object id="front-page-logo" type="image/svg+xml" data="~/Images/logo-maestriontrack-v1.svg">Your browser does not support SVG</object>
+                </a><br />
+            </li>
+
+            <li><a href="#!"><h6>MENU</h6></a></li>
+
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+
+                    <li class="bold">
+                        <a href="@Url.Action("Index", "Home", new { area = "" })" class="collapsible-header waves-effect waves-green" tabindex="0">
+                            <i class="material-icons">home</i>
+                            @Html.Raw("Inicio")
+                        </a>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-green" tabindex="0"><i class="material-icons">local_shipping</i>Envios</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Buscar envio", "Envios", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Lista de envios", "Index", "envios", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Crear envio", "Create", "envios", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-green" tabindex="0"><i class="material-icons">person</i>Clientes</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Lista de clientes", "Index", "clientes", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Crear cliente", "Create", "clientes", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-green" tabindex="0"><i class="material-icons">location_city</i>Ciudades</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Lista de ciudades", "Index", "ciudades", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Crear ciudad", "Create", "ciudades", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-green" tabindex="0"><i class="material-icons">store</i>Sedes</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Lista de sedes", "Index", "sedes", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Crear sede", "Create", "sedes", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+    </div>
+    <div class="container2">
+        <main>
+            <nav>
+                <div class="nav-wrapper">
+                    @*<div id="TittleNav"><a href="@Url.Action("Index", "Home", new { area = "" })" class="brand-logo">Sistema de Gestion de Envios</a></div>*@
+                    <span class="brand-logo" id="tittlePrin">Sistema de Gestion de Envios</span>
+                    <ul class="right">
+                        <li id="exitLink" style="color: #FFFFFF !important">@Html.ActionLink("Salir", "CerrarSesion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <!-- Añade más elementos de navegación según sea necesario -->
+                    </ul>
+                </div>
+            </nav>
+
+
+
+        </main>
+        @RenderBody()
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
